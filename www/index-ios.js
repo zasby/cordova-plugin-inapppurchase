@@ -79,14 +79,13 @@ inAppPurchase.getProducts = function (productIds) {
         } else {
           var arr = res.products.map(function (val) {
             return {
-              // productId: val.productId,
-              // title: val.title,
-              // description: val.description,
-              // price: val.price,
-              // currency: val.currency,
-              // priceAsDecimal: val.priceAsDecimal,
-              ...val,
-              productIdentifier: undefined,
+              productId   : val.productId,
+              title       : val.title,
+              description : val.description,
+              priceAsDecimal : val.priceAsDecimal,
+              price       : val.price,
+              currency    : val.currency,
+              introductoryPrice: val.introductoryPrice,
             };
           });
           resolve(arr);
