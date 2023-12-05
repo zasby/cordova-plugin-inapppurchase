@@ -37,7 +37,8 @@ inAppPurchase.getProducts = (productIds) => {
               // price       : val.price,
               // currency    : val.currency,
               // arg
-              ...val
+              ...val,
+              productIdentifier: undefined,
             }
 
           });
