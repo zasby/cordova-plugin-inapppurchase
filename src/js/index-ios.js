@@ -29,7 +29,7 @@ inAppPurchase.getProducts = (productIds) => {
           resolve([]);
         } else {
           const arr = res.products.map((val) => {
-            return
+            return {
               // productId   : val.productId,
               // title       : val.title,
               // description : val.description,
@@ -37,7 +37,8 @@ inAppPurchase.getProducts = (productIds) => {
               // price       : val.price,
               // currency    : val.currency,
               // arg
-              val
+              ...val
+            }
 
           });
           resolve(arr);
