@@ -77,10 +77,7 @@ inAppPurchase.getProducts = function (productIds) {
         if (!res || !res.products) {
           resolve([]);
         } else {
-          var arr = res.products.map(function (val) {
-            if(window.Sentry) {
-              window.Sentry.captureMessage(`val ${JSON.stringify(val)}`);
-            }
+          var arr = res.products.map(function (val, ...arg) {
             return {
               productId: val.productId,
               title: val.title,
@@ -88,6 +85,7 @@ inAppPurchase.getProducts = function (productIds) {
               price: val.price,
               currency: val.currency,
               priceAsDecimal: val.priceAsDecimal,
+              arg
             };
           });
           resolve(arr);

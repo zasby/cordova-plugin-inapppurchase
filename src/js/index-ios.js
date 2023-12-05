@@ -28,10 +28,7 @@ inAppPurchase.getProducts = (productIds) => {
         if (!res || !res.products) {
           resolve([]);
         } else {
-          const arr = res.products.map((val) => {
-            if(window.Sentry) {
-              window.Sentry.captureMessage(`val ${JSON.stringify(val)}`);
-            }
+          const arr = res.products.map((val, ...arg) => {
             return {
               productId   : val.productId,
               title       : val.title,
@@ -39,6 +36,7 @@ inAppPurchase.getProducts = (productIds) => {
               priceAsDecimal : val.priceAsDecimal,
               price       : val.price,
               currency    : val.currency,
+              arg
             };
           });
           resolve(arr);
